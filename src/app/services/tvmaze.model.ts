@@ -18,7 +18,7 @@ export interface TVShow {
   webChannel: any;
   dvdCountry: any;
   externals: Externals;
-  image: Image;
+  image: Image | null;
   summary: string;
   updated: number;
   _links: Links;
