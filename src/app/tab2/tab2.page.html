@@ -1,17 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-searchbar
+      [debounce]="400"
+      (ionInput)="handleInput($event)"
+      placeholder="Search for a TV show..."
+    ></ion-searchbar>
+  </ion-toolbar>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list *ngIf="searchResults.length">
+    <app-show-item
+      button
+      detail
+      *ngFor="let item of searchResults"
+      [item]="item.show"
+    >
+    </app-show-item>
+  </ion-list>
 </ion-content>

@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true" class="dashboard ion-padding-vertical">
+  <section *ngFor="let item of tvShowsByGenre" class="genre-section">
+    <ion-text class="title">{{ item.name }}</ion-text>
+    <ion-text class="subtitle" color="medium">
+      Check out all the {{ item.name }} shows
+    </ion-text>
+    <swiper-container class="swiper" [slidesPerView]="slidesPerView">
+      <swiper-slide
+        *ngFor="let show of item.items | slice : 0 : 10; trackBy: trackByShowFn"
+      >
+        <ion-card href="/detail/{{ show.id }}">
+          <ion-img alt="show picture" [src]="show.image.medium"></ion-img>
+          <ion-card-header>
+            <ion-card-title class="nowrap">{{ show.name }}</ion-card-title>
+            <ion-card-subtitle>
+              <ion-badge>{{ show.rating.average }}</ion-badge>
+              <ion-text> {{ show.averageRuntime }} min. </ion-text>
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-text class="nowrap">
+              <strong>Network:</strong> {{ show.network?.name || "-" }}
+            </ion-text>
+            <ion-text class="nowrap">
+              {{ show.network?.country?.name || "" }}
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+      </swiper-slide>
+    </swiper-container>
+  </section>
+</ion-content>

@@ -1,0 +1,7 @@
+<ion-item button detail *ngIf="item" href="/detail/{{ item.id }}">
+  <ion-img [src]="item.image.medium" alt="show picture"></ion-img>
+  <ion-label>
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.genres.join(", ") }}</p>
+  </ion-label>
+</ion-item>
